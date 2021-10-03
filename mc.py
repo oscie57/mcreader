@@ -1,16 +1,17 @@
-from colorama import init, Fore, Back, Style
-import time, os, random, threading, getpass, platform, random, string, sys
+from colorama import init, Fore, Style
+import time, os, random, threading, getpass, random, string, sys
 from playsound import playsound
+from subprocess import call
 
 init()
 
-def typewriter(string, end='\n', rate=6):
+def typewriter(string, end='\n', rate=5000):
     for char in string:
         print(char, end='', flush=True)
         time.sleep(random.random() / rate)
     print(end, end='', flush=True)
 
-def typewriterC(string, end='\n', rate=10):
+def typewriterC(string, end='\n', rate=6000):
     for char in string:
         print(char, end='', flush=True)
         time.sleep(random.random() / rate)
@@ -31,20 +32,17 @@ def yellow(text: str):
     typewriterC(Fore.LIGHTYELLOW_EX + text + Style.RESET_ALL)
 
 def check():
-    if platform.system() == "Windows":
-        os.system("cls")
-    elif platform.system() == "Linux":
-        os.system("clear")
-    elif platform.system() == "Darwin":
-        os.system("clear")
+    call("clear" if os.name == "posix" else "cls")
 
 def scramblerBLUE():
-    ran = "".join(random.choices(string.ascii_uppercase + string.digits, k=6))
+    amt = random.randint(5, 12)
+    ran = "".join(random.choices(string.ascii_uppercase + string.digits, k=amt))
     release = Fore.LIGHTYELLOW_EX + ran + Fore.BLUE
     return str(release)
 
 def scramblerGREEN():
-    ran = "".join(random.choices(string.ascii_uppercase + string.digits, k=6))
+    amt = random.randint(5, 12)
+    ran = "".join(random.choices(string.ascii_uppercase + string.digits, k=amt))
     release = Fore.LIGHTYELLOW_EX + ran + Fore.GREEN
     return str(release)  
 
@@ -123,18 +121,9 @@ def text():
     blue("And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love.\n\nYou are the player.")
     green("Wake up.")
 
-
+    print("\n")
     time.sleep(5)
-    
-    print("5...")
-    time.sleep(1)
-    print("4...")
-    time.sleep(1)
-    print("3...")
-    time.sleep(1)
-    print("2...")
-    time.sleep(1)
-    print("1...")
+    print("\n")
     time.sleep(2)
     
     credits()
@@ -168,19 +157,32 @@ def credits():
     grey("Additional programming:")
     white("         Paul Spooner\n         Ryan 'Scaevolus' Hitchman\n         Elliot 'Hippoplatimus' Segal\n")
     grey("Developers of Mo' Creatures (horses etc):")
-    white("         John Olarte (DrZhark)\n         Kent Christian Jensen\n         Dan Roque")
+    white("         John Olarte (DrZhark)\n         Kent Christian Jensen\n         Dan Roque\n")
     grey("Technologies used:")
-    white('         Java by Oracle\n         LWJGL by many talented people\n         "3d Sound System" by Paul Lamb\n         JOrbis by JCraft\n')
+    white('         Java by Oracle\n         LWJGL by many talented people\n         "3d Sound System" by Paul Lamb\n         JOrbis by JCraft\n\n')
+    white("===============")
+    yellow("Script Credits")
+    white("===============\n")
+    grey("Script writer:")
+    white("         Oscar Hudson\n")
+    grey("Libraries used:")
+    white("         Created with Python\n         Colorama by Johnathan Hartley\n         Playsound by Taylor Marks\n")
+    grey("Assistance:")
+    white("         Noah Pistilli")
     time.sleep(3)
-    white('\n\n"Twenty years from now you will be more disappointed by the things that you didnt do than by the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover."' + Fore.LIGHTBLACK_EX + " - Unknown")
-    time.sleep(5)
-    yellow("And that was the end... of the end.")
-    time.sleep(8)
-    sys.exit(0)
-    
-    
-    
+    white('\n\n"Twenty years from now you will be more disappointed by the things that you didnt do than by the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover."' + Fore.LIGHTBLACK_EX + " - Unknown\n")
 
+    time.sleep(5)
+    check()
+    yellow("And that was the end... of the end.")
+    time.sleep(2)
+    yellow("Or... the end of a dream.")
+    time.sleep(8)
+    check()
+
+    time.sleep(5)
+    
+    
 check()
 threading.Thread(target=audio).start()
 threading.Thread(target=text).start()
