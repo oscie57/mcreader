@@ -5,13 +5,13 @@ from subprocess import call
 
 init()
 
-def typewriter(string, end='\n', rate=5000):
+def typewriter(string, end='\n', rate=5):
     for char in string:
         print(char, end='', flush=True)
         time.sleep(random.random() / rate)
     print(end, end='', flush=True)
 
-def typewriterC(string, end='\n', rate=6000):
+def typewriterC(string, end='\n', rate=6):
     for char in string:
         print(char, end='', flush=True)
         time.sleep(random.random() / rate)
