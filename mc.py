@@ -47,7 +47,7 @@ def scramblerGREEN():
     return str(release)  
 
 def audio():
-    playsound("audio.mp3")
+    playsound("audio")
 
 def text():
     playername = getpass.getuser()
