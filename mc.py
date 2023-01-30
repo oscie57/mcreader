@@ -164,11 +164,11 @@ def credits():
     yellow("Script Credits")
     white("===============\n")
     grey("Script writer:")
-    white("         Oscar Hudson\n")
+    white("         oscie57\n")
     grey("Libraries used:")
     white("         Created with Python\n         Colorama by Johnathan Hartley\n         Playsound by Taylor Marks\n")
     grey("Assistance:")
-    white("         Noah Pistilli")
+    white("         SketchMaster2001")
     time.sleep(3)
     white('\n\n"Twenty years from now you will be more disappointed by the things that you didnt do than by the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover."' + Fore.LIGHTBLACK_EX + " - Unknown\n")
 
